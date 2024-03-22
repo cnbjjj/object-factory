@@ -1,0 +1,124 @@
+@charset "utf-8";
+
+:root {
+    --bg-color: #fdfcf5;
+    --color: #1c1a10;
+    --highlight-color: #327fc9;
+    --light-color: #efefef;
+    --button-color: #555e7e;
+    --placeholder-color: #cfcfcf;
+    --rows: 5;
+    --cols: 8;
+    --cell-size: calc(80svh/var(--cols));
+}
+
+body {
+    font-family: 'Orbitron', 'Open Sans', Arial, sans-serif;
+    font-weight: 500;
+    background-color: var(--bg-color);
+    color: var(--color);
+}
+
+/* 
+    Utility classes 
+*/
+.grid { display: grid; }
+.grid-center { place-items: center; }
+.rs-1 { grid-row-start: 1; }
+.rs-2 { grid-row-start: 2; }
+.rs-3 { grid-row-start: 3; }
+.rs-4 { grid-row-start: 4; }
+.rs-5 { grid-row-start: 5; }
+.flex { display: flex; }
+.flex-sb { justify-content: space-between; }
+.gap-20 { gap: 20px; }
+.mt-20 { margin-top: 20px; }
+.mb-20 { margin-bottom: 20px; }
+.br-5 { border-radius: 5px; }
+.unselectable {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.hidden { visibility: hidden; }
+.warning { color: var(--highlight-color) }
+
+/* 
+    Main
+*/
+main {
+    min-height: 100svh;
+    text-align: center;
+}
+
+h1 {
+    font-size: 60px;
+    line-height: 1;
+    font-weight: 800;
+    margin-bottom: 40px;
+}
+
+input,
+select,
+option {
+    padding: 15px 25px;
+    background-color: var(--light-color);
+}
+
+select,
+option {
+    appearance: none;
+    flex: 1;
+    text-align: left;
+}
+
+input {
+    flex: 0.5;
+    text-align: center;
+    &[type=button] {
+        font-weight: 700;
+        background-color: var(--button-color);
+        color: var(--light-color);
+    }
+    &[type=button]:hover {
+        background-color: var(--highlight-color);
+    }
+}
+
+/* 
+    Shapes Section
+*/
+
+.shape-container {
+    display: grid;
+    grid-template-columns: repeat(var(--cols), var(--cell-size));
+    grid-template-rows: repeat(var(--rows), var(--cell-size));
+    background-color: var(--light-color);
+    height: cal(var(--rows) * var(--cell-size))px;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.shape {
+    cursor: pointer;
+    opacity: 0.85;
+    animation: fadeIn 0.2s ease-in-out;
+    &:hover {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; scale: 0.5; }
+    50% { opacity: 0.5; scale: 1.1; }
+    100% { opacity: 0.85; scale: 1; }
+}
+
+.circle { border-radius: 50%; }
+.square { border-radius: 5px; }
+.blue { background-color: #09f; }
+.green { background-color: #9f0; }
+.orange { background-color: #f90; }
+.pink { background-color: #f09; }
+.purple { background-color: #90f; }
