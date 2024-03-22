@@ -3,10 +3,10 @@ import * as utils from './utils.js';
 import Shape from './Shape.js';
 
 function createShape() {
-    if (shapesArray.length >= ROWS * COLS)
-        return shapeInfo.innerHTML = '<span class="warning">Container is full.</span>';
     if (shapes.selectedIndex === 0 || colors.selectedIndex === 0)
         return shapeInfo.innerHTML = '<span class="warning">Please select a shape and a color to create a shape.</span>';
+    if (shapesArray.length >= ROWS * COLS)
+        return shapeInfo.innerHTML = '<span class="warning">Container is full.</span>';
     const id = shapesArray.length + 1;
     const shapeClass = shapes.value;
     const shapeColor = { name: colors[colors.selectedIndex].text, value: colors.value };
